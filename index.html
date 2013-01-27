@@ -22,27 +22,18 @@
 
   <body>
     <div class="container-narrow">
-
-     <!--  <div class="masthead">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-        <h3 class="muted">Courier Tracker</h3>
-      </div>
-
-      <hr> -->
-
       <div class="jumbotron">
         <h1>Super awesome traking tool!</h1>
         <p class="lead">Select Courier Company you want to track!</p>
         <div class="row-fluid">
         <div class="span12">
           <div class="row-fluid">
-            <div class="span6"><button type="button" class="btn btn-info btn-block">Delhivery</button></div>
-            <div class="span6"><button type="button" class="btn btn-info btn-block">Aramex</button></div>
+            <div class="span3"><label class="btn btn-info btn-block"><input type="radio" name="company" value="aramex">Aramex</label></div>
+            <div class="span3"><label class="btn btn-info btn-block"><input type="radio" name="company" value="delhivery">Delhivery</label></div> <div class="span3"><label class="btn btn-info btn-block"><input type="radio" name="company" value="bluedart">Bluedart</label></div>
+            <div class="span3"><label class="btn btn-info btn-block"><input type="radio" name="company" value="dtdc">DTDC</label></div>
+            
           </div>
+
         </div>
 
       </div>
@@ -65,22 +56,61 @@
       <hr>
 
       <div class="footer">
-        <p>&copy; <a href="http://wasimshaikh.com">Wasim Shaikh</a></p>
+        <p>v0.1 &copy; <a href="http://wasimshaikh.com">Wasim Shaikh</a></p>
       </div>
 
-    </div> <!-- /container -->>
-    <script src="http://twitter.github.com/bootstrap/assets/js/jquery.js"></script>
+    </div> <!-- /container -->
+    <script src="js/jquery.min.js"></script>
    
-    <script src="js/app.js"></script>
+
             <script>
-            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+            // var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            // document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
           <script type="text/javascript">
-            try {
-              var pageTracker = _gat._getTracker("UA-33563584-1");
-            pageTracker._trackPageview();
-            } catch(err) {}
+            // try {
+            //   var pageTracker = _gat._getTracker("UA-33563584-1");
+            // pageTracker._trackPageview();
+            // } catch(err) {}
+            jQuery(document).ready(function(){
+              jQuery("label.btn").click(function(){
+                console.log("click");
+              jQuery('label').removeClass('btn-primary').addClass('btn-info');
+              jQuery(this).addClass('btn-primary').removeClass('btn-info');
+          //    jQuery(this).addClass('btn-primary').removeClass('btn-primary');
+
+              })
+
+              var tURL ="";
+              jQuery("#trackingButton").click(function(e){
+              //  alert("I am click");
+              var tc = jQuery("#trackingCode").val();
+              var cName = jQuery("input[name=company]:checked").attr("value");
+               switch (cName)
+                {
+                case 'aramex':
+                  tURL="http://www.aramex.com/track_results_multiple.aspx?ShipmentNumber=";
+                  break;
+                case 'delhivery':
+                  tURL="http://track.delhivery.com/p/";
+                  break;
+                case 'bluedart':
+                  tURL="http://www.bluedart.com/servlet/RoutingServlet?handler=tnt&awb=awb&action=awbquery&numbers=";
+                  break;
+                case 'dtdc':
+                  tURL="http://www.dtdc.in/dtdcTrack/Tracking/consignInfo.asp?action=track&sec=tr&GES=N&Ttype=cnno&strCnno=";
+                  break;
+                }
+              if(tc == "" || cName == undefined)
+              {
+                alert('Please Select Courier company and enter tracking code');
+               e.preventDefault();
+              }
+               else{ jQuery(this).attr("href", tURL+tc);}
+
+               
+              });
+            });
           </script>
 
   </body>

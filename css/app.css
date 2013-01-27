@@ -38,3 +38,5 @@ body {
         height: auto !important;
         font-size: 14px !important;
       }
+
+      input[type="radio"]{opacity: 0;margin-left: -14px;}

@@ -40,3 +40,12 @@ body {
       }
 
       input[type="radio"]{opacity: 0;margin-left: -14px;}
+@media (max-width: 480px) {
+      .jumbotron h1 {
+        font-size: 48px;
+        line-height: 1;
+      }
+      hr {
+margin: 8px 0;
+
+}

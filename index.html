@@ -50,17 +50,6 @@
 			<p>v0.1 &copy; <a href="http://wasimshaikh.com">Wasim Shaikh</a></p>
 			<p class="alert alert-info">Improve Courier tracker: add issue, improvement, questions  at <a href="https://github.com/wasim117/courier-tracker/issues">github repo</a></p>
 		</div>
-<<<<<<< HEAD
-		<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-	<!-- trackit -->
-		<ins class="adsbygoogle"
-		 style="display:inline-block;width:336px;height:280px"
-		 data-ad-client="ca-pub-0495755600187080"
-		 data-ad-slot="2695041264"></ins>
-		<script>
-		//(adsbygoogle = window.adsbygoogle || []).push({});
-		</script>
-=======
 	<style>
 .trackit-resposive { width: 320px; height: 50px; }
 @media(min-width: 500px) { .trackit-resposive { width: 468px; height: 60px; } }
@@ -75,7 +64,6 @@
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
->>>>>>> ba000914a52eae67433cf92f764fd004d3c29a42
 	</div> <!-- /container -->
 	<script src="js/jquery.min.js"></script>
 	<script>
@@ -87,19 +75,7 @@
 		  var pageTracker = _gat._getTracker("UA-33563584-1");
 		pageTracker._trackPageview();
 		} catch(err) {}
-
 		jQuery(document).ready(function(){
-
-$("#trackingCode").keyup(function(e){ 
-
-    var code = e.which; // recommended to use e.which, it's normalized across browsers
- //   if(code==13)e.preventDefault();
-    if(code==13){
-        jQuery("#trackingButton").trigger("click");
-    } // missing closing if brace
-});
-
-
 		  jQuery("label.btn").click(function(){
 			console.log("click");
 		  jQuery('label').removeClass('btn-primary').addClass('btn-info');
@@ -110,38 +86,33 @@ $("#trackingCode").keyup(function(e){
 
 		  var tURL ="";
 		  jQuery("#trackingButton").click(function(e){
-        _setFeedEndpoints(jQuery(this));
+		  //  alert("I am click");
+		  var tc = jQuery("#trackingCode").val();
+		  var cName = jQuery("input[name=company]:checked").attr("value");
+		   switch (cName)
+			{
+			case 'aramex':
+			  tURL="http://www.aramex.com/track_results_multiple.aspx?ShipmentNumber=";
+			  break;
+			case 'delhivery':
+			  tURL="http://track.delhivery.com/p/";
+			  break;
+			case 'bluedart':
+			  tURL="http://www.bluedart.com/servlet/RoutingServlet?handler=tnt&awb=awb&action=awbquery&numbers=";
+			  break;
+			case 'dtdc':
+			  tURL="http://www.dtdc.in/dtdcTrack/Tracking/consignInfo.asp?action=track&sec=tr&GES=N&Ttype=cnno&strCnno=";
+			  break;
+			}
+		  if(tc == "" || cName == undefined)
+		  {
+			alert('Please Select Courier company and enter tracking code');
+		   e.preventDefault();
+		  }
+		   else{ jQuery(this).attr("href", tURL+tc);}
+
+		   
 		  });
-
-
-function _setFeedEndpoints(a) {
-   //  alert("I am click");
-      var tc = jQuery("#trackingCode").val();
-      var cName = jQuery("input[name=company]:checked").attr("value");
-       switch (cName)
-      {
-      case 'aramex':
-        tURL="http://www.aramex.com/track_results_multiple.aspx?ShipmentNumber=";
-        break;
-      case 'delhivery':
-        tURL="http://track.delhivery.com/p/";
-        break;
-      case 'bluedart':
-        tURL="http://www.bluedart.com/servlet/RoutingServlet?handler=tnt&awb=awb&action=awbquery&numbers=";
-        break;
-      case 'dtdc':
-        tURL="http://www.dtdc.in/dtdcTrack/Tracking/consignInfo.asp?action=track&sec=tr&GES=N&Ttype=cnno&strCnno=";
-        break;
-      }
-      if(tc == "" || cName == undefined)
-      {
-      alert('Please Select Courier company and enter tracking code');
-       e.preventDefault();
-      }
-       else{ a.attr("href", tURL+tc);}
-
-}
-
 		});
 	 </script>
 </body>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Courier Tracker all in One</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<!-- Le styles -->
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/bootstrap-responsive.css" rel="stylesheet">
+	<link href="css/app.css" rel="stylesheet">
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	<div class="container-narrow">
+		<div class="jumbotron">
+			<h1>Super awesome tracking tool!</h1>
+			<p class="lead">Select Courier Company you want to track!</p>
+			<div class="row">
+				<div class="col-sm-12 col-md-12 companies" >
+					<div class="row">
+							<div class="col-sm-4 col-md-4"><label class="btn btn-info btn-block"><input type="radio" name="company" value="aramex">Aramex</label></div>
+							<div class="col-sm-4 col-md-4"><label class="btn btn-info btn-block"><input type="radio" name="company" value="delhivery">Delhivery</label></div>
+							<div class="col-sm-4 col-md-4"><label class="btn btn-info btn-block"><input type="radio" name="company" value="bluedart">Bluedart</label></div>
+						</div>
+				</div>
+			</div>
+			<hr>
+			
+			<div class="row">
+				<div class="col-md-8">
+					<label class="sr-only" for="trackingCode">Enter Tracking Code ...</label>
+					<input class="tracking-input form-control" id="trackingCode" type="text" placeholder="Enter Tracking Code ...">
+				</div>
+				<div class="col-md-4">
+					<a href="#" class="btn btn-success btn-block" id="trackingButton" target="_blank">Track Now</a>
+				</div>
+				
+				</div>
+
+		</div>
+		
+		<hr>
+		<div class="footer">
+			<p>v0.1.1 &copy; <a href="http://wasimshaikh.com">Wasim Shaikh</a></p>
+			<p class="alert alert-info">Improve Courier tracker: add issue, improvement, questions  at <a href="https://github.com/wasim117/courier-tracker/issues">github repo</a></p>
+		</div>
+	<style>
+.trackit-resposive { width: 320px; height: 50px; }
+@media(min-width: 500px) { .trackit-resposive { width: 468px; height: 60px; } }
+@media(min-width: 800px) { .trackit-resposive { width: 728px; height: 90px; } }
+</style>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Trackit_resposive -->
+<ins class="adsbygoogle trackit-resposive"
+     style="display:inline-block"
+     data-ad-client="ca-pub-0495755600187080"
+     data-ad-slot="3656566469"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+	</div> <!-- /container -->
+	<script src="js/jquery.min.js"></script>
+	<script>
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	<script type="text/javascript">
+		try {
+		  var pageTracker = _gat._getTracker("UA-33563584-1");
+		pageTracker._trackPageview();
+		} catch(err) {}
+		jQuery(document).ready(function(){
+		  jQuery("label.btn").click(function(){
+			console.log("click");
+		  jQuery('label').removeClass('btn-primary').addClass('btn-info');
+		  jQuery(this).addClass('btn-primary').removeClass('btn-info');
+	  //    jQuery(this).addClass('btn-primary').removeClass('btn-primary');
+
+		  })
+
+		  var tURL ="";
+		  jQuery("#trackingButton").click(function(e){
+		  //  alert("I am click");
+		  var tc = jQuery("#trackingCode").val();
+		  var cName = jQuery("input[name=company]:checked").attr("value");
+		   switch (cName)
+			{
+			case 'aramex':
+			  tURL="http://www.aramex.com/track_results_multiple.aspx?ShipmentNumber=";
+			  break;
+			case 'delhivery':
+			  tURL="http://track.delhivery.com/p/";
+			  break;
+			case 'bluedart':
+			  tURL="http://www.bluedart.com/servlet/RoutingServlet?handler=tnt&awb=awb&action=awbquery&numbers=";
+			  break;
+			case 'dtdc':
+			  tURL="http://www.dtdc.in/dtdcTrack/Tracking/consignInfo.asp?action=track&sec=tr&GES=N&Ttype=cnno&strCnno=";
+			  break;
+			}
+		  if(tc == "" || cName == undefined)
+		  {
+			alert('Please Select Courier company and enter tracking code');
+		   e.preventDefault();
+		  }
+		   else{ jQuery(this).attr("href", tURL+tc);}
+
+		   
+		  });
+		});
+	 </script>
+</body>
+</html>

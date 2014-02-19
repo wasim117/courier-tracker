@@ -24,9 +24,10 @@
 			<div class="row">
 				<div class="col-sm-12 col-md-12 companies" >
 					<div class="row">
-							<div class="col-sm-4 col-md-4"><label class="btn btn-info btn-block"><input type="radio" name="company" value="aramex">Aramex</label></div>
-							<div class="col-sm-4 col-md-4"><label class="btn btn-info btn-block"><input type="radio" name="company" value="delhivery">Delhivery</label></div>
-							<div class="col-sm-4 col-md-4"><label class="btn btn-info btn-block"><input type="radio" name="company" value="bluedart">Bluedart</label></div>
+							<div class="col-sm-3 col-md-3"><label class="btn btn-info btn-block"><input type="radio" name="company" value="aramex">Aramex</label></div>
+							<div class="col-sm-3 col-md-3"><label class="btn btn-info btn-block"><input type="radio" name="company" value="delhivery">Delhivery</label></div>
+							<div class="col-sm-3 col-md-3"><label class="btn btn-info btn-block"><input type="radio" name="company" value="bluedart">Bluedart</label></div>
+							<div class="col-sm-3 col-md-3"><label class="btn btn-info btn-block"><input type="radio" name="company" value="gati">Gati</label></div>
 						</div>
 				</div>
 			</div>
@@ -103,6 +104,9 @@
 			case 'dtdc':
 			  tURL="http://www.dtdc.in/dtdcTrack/Tracking/consignInfo.asp?action=track&sec=tr&GES=N&Ttype=cnno&strCnno=";
 			  break;
+			case 'gati':
+			  tURL="http://www.gati.com/single_dkt_track_int.jsp?dktNo=";
+			  break;  
 			}
 		  if(tc == "" || cName == undefined)
 		  {

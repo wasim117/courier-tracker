@@ -49,7 +49,6 @@
 		<hr>
 		<div class="footer">
 			<p>v0.1.1 &copy; <a href="http://wasimshaikh.com">Wasim Shaikh</a></p>
-			<p class="alert alert-info">Improve Courier tracker: add issue, improvement, questions  at <a href="https://github.com/wasim117/courier-tracker/issues">github repo</a></p>
 		</div>
 	<style>
 .trackit-resposive { width: 320px; height: 50px; }
@@ -80,11 +79,7 @@
 		} catch(err) {}
 		
 		Parse.initialize("xXP8jjjtCMF7vWj5OXFgCqSTcjwL7KCEpsKkGCn3", "9Zhd08mzCcWCP4vPpvXtTZ47KRBpDncgqNVWrnpw");
-		var TestObject = Parse.Object.extend("TestObject");
-		var testObject = new TestObject();
-		testObject.save({foo: "bar"}).then(function(object) {
-		  alert("yay! it worked");
-		});
+	
 		
 		jQuery(document).ready(function(){
 		  jQuery("label.btn").click(function(){

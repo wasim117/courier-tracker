@@ -100,6 +100,8 @@
 		  //  alert("I am click");
 		  var tc = jQuery("#trackingCode").val();
 		  var cName = jQuery("input[name=company]:checked").attr("value");
+		  
+		  saveCourier(cName, tc);
 		   switch (cName)
 			{
 			case 'aramex':
@@ -127,6 +129,28 @@
 
 		   
 		  });
+		  
+		  function saveCourier(cName, tc){
+			 
+			
+			  var Story = Parse.Object.extend("CourierDetails");
+			  var story = new Story();
+			
+			  story.set("c_company" , cName);
+			  story.set("t_code" , tc);
+			
+			  story.save(null, {
+			    success: function(data1){
+			      //getStory();
+			     	//closeModal();
+			     	console.log(data1);
+			    },
+			    error: function(data1, error){
+			      console.log("error");
+			    }
+			  })
+			}
+		  
 		});
 		
 	 </script>

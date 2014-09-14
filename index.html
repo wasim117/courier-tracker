@@ -67,6 +67,8 @@
 </script>
 	</div> <!-- /container -->
 	<script src="js/jquery.min.js"></script>
+	<!--parse js -->
+	<script src="//www.parsecdn.com/js/parse-1.3.0.min.js"></script>
 	<script>
 		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -76,6 +78,14 @@
 		  var pageTracker = _gat._getTracker("UA-33563584-1");
 		pageTracker._trackPageview();
 		} catch(err) {}
+		
+		Parse.initialize("xXP8jjjtCMF7vWj5OXFgCqSTcjwL7KCEpsKkGCn3", "9Zhd08mzCcWCP4vPpvXtTZ47KRBpDncgqNVWrnpw");
+		var TestObject = Parse.Object.extend("TestObject");
+		var testObject = new TestObject();
+		testObject.save({foo: "bar"}).then(function(object) {
+		  alert("yay! it worked");
+		});
+		
 		jQuery(document).ready(function(){
 		  jQuery("label.btn").click(function(){
 			console.log("click");

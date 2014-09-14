@@ -24,9 +24,10 @@
 			<div class="row">
 				<div class="col-sm-12 col-md-12 companies" >
 					<div class="row">
-							<div class="col-sm-4 col-md-4"><label class="btn btn-info btn-block"><input type="radio" name="company" value="aramex">Aramex</label></div>
-							<div class="col-sm-4 col-md-4"><label class="btn btn-info btn-block"><input type="radio" name="company" value="delhivery">Delhivery</label></div>
-							<div class="col-sm-4 col-md-4"><label class="btn btn-info btn-block"><input type="radio" name="company" value="bluedart">Bluedart</label></div>
+							<div class="col-sm-3 col-md-3"><label class="btn btn-info btn-block"><input type="radio" name="company" value="aramex">Aramex</label></div>
+							<div class="col-sm-3 col-md-3"><label class="btn btn-info btn-block"><input type="radio" name="company" value="delhivery">Delhivery</label></div>
+							<div class="col-sm-3 col-md-3"><label class="btn btn-info btn-block"><input type="radio" name="company" value="bluedart">Bluedart</label></div>
+							<div class="col-sm-3 col-md-3"><label class="btn btn-info btn-block"><input type="radio" name="company" value="gati">Gati</label></div>
 						</div>
 				</div>
 			</div>
@@ -48,7 +49,6 @@
 		<hr>
 		<div class="footer">
 			<p>v0.1.1 &copy; <a href="http://wasimshaikh.com">Wasim Shaikh</a></p>
-			<p class="alert alert-info">Improve Courier tracker: add issue, improvement, questions  at <a href="https://github.com/wasim117/courier-tracker/issues">github repo</a></p>
 		</div>
 	<style>
 .trackit-resposive { width: 320px; height: 50px; }
@@ -66,6 +66,8 @@
 </script>
 	</div> <!-- /container -->
 	<script src="js/jquery.min.js"></script>
+	<!--parse js -->
+	<script src="//www.parsecdn.com/js/parse-1.3.0.min.js"></script>
 	<script>
 		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -75,6 +77,10 @@
 		  var pageTracker = _gat._getTracker("UA-33563584-1");
 		pageTracker._trackPageview();
 		} catch(err) {}
+		
+		Parse.initialize("xXP8jjjtCMF7vWj5OXFgCqSTcjwL7KCEpsKkGCn3", "9Zhd08mzCcWCP4vPpvXtTZ47KRBpDncgqNVWrnpw");
+	
+		
 		jQuery(document).ready(function(){
 		  jQuery("label.btn").click(function(){
 			console.log("click");
@@ -89,6 +95,8 @@
 		  //  alert("I am click");
 		  var tc = jQuery("#trackingCode").val();
 		  var cName = jQuery("input[name=company]:checked").attr("value");
+		  
+		  saveCourier(cName, tc);
 		   switch (cName)
 			{
 			case 'aramex':
@@ -103,6 +111,9 @@
 			case 'dtdc':
 			  tURL="http://www.dtdc.in/dtdcTrack/Tracking/consignInfo.asp?action=track&sec=tr&GES=N&Ttype=cnno&strCnno=";
 			  break;
+			case 'gati':
+			  tURL="http://www.gati.com/single_dkt_track_int.jsp?dktNo=";
+			  break;  
 			}
 		  if(tc == "" || cName == undefined)
 		  {
@@ -113,7 +124,39 @@
 
 		   
 		  });
+		  
+		  function saveCourier(cName, tc){
+			 
+			
+			  var Story = Parse.Object.extend("CourierDetails");
+			  var story = new Story();
+			
+			  story.set("c_company" , cName);
+			  story.set("t_code" , tc);
+			
+			  story.save(null, {
+			    success: function(data1){
+			      //getStory();
+			     	//closeModal();
+			     	console.log(data1);
+			    },
+			    error: function(data1, error){
+			      console.log("error");
+			    }
+			  })
+			}
+		  
 		});
+		
 	 </script>
+	 <script type="text/javascript">
+   var _mfq = _mfq || [];
+   (function() {
+       var mf = document.createElement("script"); mf.type = "text/javascript"; mf.async = true;
+       mf.src = "//cdn.mouseflow.com/projects/0ceb7258-aa76-4c3e-a8ec-cf5ab70f096c.js";
+       document.getElementsByTagName("head")[0].appendChild(mf);
+   })();
+</script>
+	 
 </body>
 </html>

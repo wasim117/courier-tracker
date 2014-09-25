@@ -1,97 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Courier Tracker all in One .</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="">
-	<meta name="author" content="">
+  <meta charset="utf-8">
+  <title>Courier Tracker all in One .</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-	<!-- Le styles -->
-	<link href="css/bootstrap.css" rel="stylesheet">
-	<link href="css/bootstrap-responsive.css" rel="stylesheet">
-	<link href="css/app.css" rel="stylesheet">
-	<!--[if lt IE 9]>
-	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
+  <!-- Le styles -->
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link href="css/bootstrap-responsive.css" rel="stylesheet">
+  <link href="css/app.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
 </head>
 
 <body>
-	<div class="container-narrow">
-		<div class="jumbotron">
-			<h1>Super awesome tracking tool!</h1>
-			<p class="lead">Select Courier Company you want to track!</p>
-			<div class="row">
-				<div class="col-sm-12 col-md-12 companies" >
-					<div class="row">
-							<div class="col-sm-3 col-md-3"><label class="btn btn-info btn-block"><input type="radio" name="company" value="aramex">Aramex</label></div>
-							<div class="col-sm-3 col-md-3"><label class="btn btn-info btn-block"><input type="radio" name="company" value="delhivery">Delhivery</label></div>
-							<div class="col-sm-3 col-md-3"><label class="btn btn-info btn-block"><input type="radio" name="company" value="bluedart">Bluedart</label></div>
-							<div class="col-sm-3 col-md-3"><label class="btn btn-info btn-block"><input type="radio" name="company" value="gati">Gati</label></div>
-						</div>
-				</div>
-			</div>
-			<hr>
-			
-			<div class="row">
-				<div class="col-md-8">
-					<label class="sr-only" for="trackingCode">Enter Tracking Code ...</label>
-					<input class="tracking-input form-control" id="trackingCode" type="text" placeholder="Enter Tracking Code ...">
-				</div>
-				<div class="col-md-4">
-					<a href="#" class="btn btn-success btn-block" id="trackingButton" target="_blank">Track Now</a>
-				</div>
-				
-				</div>
+  <div class="container-narrow">
+    <div class="jumbotron">
+      <h1 id="welcome_message">Super awesome tracking tool!</h1>
+      <p class="lead">Select Courier Company you want to track!</p>
+      <div class="row">
+        <div class="col-sm-12 col-md-12 companies" >
+          <div class="row">
+              <div class="col-sm-3 col-md-3"><label class="btn btn-info btn-block"><input type="radio" name="company" value="aramex">Aramex</label></div>
+              <div class="col-sm-3 col-md-3"><label class="btn btn-info btn-block"><input type="radio" name="company" value="delhivery">Delhivery</label></div>
+              <div class="col-sm-3 col-md-3"><label class="btn btn-info btn-block"><input type="radio" name="company" value="bluedart">Bluedart</label></div>
+              <div class="col-sm-3 col-md-3"><label class="btn btn-info btn-block"><input type="radio" name="company" value="gati">Gati</label></div>
+            </div>
+        </div>
+      </div>
+      <hr>
+      
+      <div class="row">
+        <div class="col-md-8">
+          <label class="sr-only" for="trackingCode">Enter Tracking Code ...</label>
+          <input class="tracking-input form-control" id="trackingCode" type="text" placeholder="Enter Tracking Code ...">
+        </div>
+        <div class="col-md-4">
+          <a href="#" class="btn btn-success btn-block" id="trackingButton" target="_blank">Track Now</a>
+        </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-md-12">
+              <h3 id="trackingTitle">To view your tracking history Sign In</h3>
+              <ul id="cList" class="list-group"></ul>
+          </div>
+        </div>
+        <div class="row">
+        	<div class="col-md-6">
+            <div id="sign-in">
+            <h4>Sign In</h4>
+              <div class="form-group">
+                <input type="text" placeholder="Email" class="form-control" autocomplete="off" style="cursor: auto;" id="l-email">
+              </div>
 
-		</div>
-		
-		<hr>
-		<div class="footer">
-			<p>v0.1.1 &copy; <a href="http://wasimshaikh.com">Wasim Shaikh</a></p>
-		</div>
-	<style>
+            <div class="form-group">
+              <input type="password" placeholder="Password" class="form-control" autocomplete="off" id="l-pw">
+            </div>
+              <button type="submit" class="btn btn-success"  id="login">Sign in</button>
+            </div>
+        	</div>
+        <div class="col-md-6">
+         <div class="signup">
+                <h4>Sign Up for new user</h4>
+            <div class="form-group">
+              <input type="text" placeholder="Email" class="form-control" autocomplete="off" style="cursor: auto;" id="r-email">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password" class="form-control" autocomplete="off" id="r-pw">
+            </div>
+            <button type="submit" class="btn btn-success"  id="sign-up">Sign up</button>
+          
+              </div>
+        </div>
+        
+        </div>
+
+    </div>
+    <div class="row" id="logout-container">
+      <div class="col-md-6 col-md-offset-3"><a id="logOut" type="button" class="btn btn-danger btn-lg btn-block">Logout</a>
+</div>
+    </div>
+    <div class="footer" >
+    
+    
+   <!--     <p>v0.1.1 &copy; <a href="http://wasimshaikh.com">Wasim Shaikh</a></p>-->
+    </div>
+  <style>
+  #sign-in,
+  #logout-container
+  .signup{display: none;}
 .trackit-resposive { width: 320px; height: 50px; }
 @media(min-width: 500px) { .trackit-resposive { width: 468px; height: 60px; } }
 @media(min-width: 800px) { .trackit-resposive { width: 728px; height: 90px; } }
 </style>
-<!--
-<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle trackit-resposive"
-     style="display:inline-block"
-     data-ad-client="ca-pub-0495755600187080"
-     data-ad-slot="3656566469"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
--->
-	</div> <!-- /container -->
-	<!-- Analytics commented
-	<script>
-		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-	</script>
-	<script type="text/javascript">
-		try {
-		  var pageTracker = _gat._getTracker("UA-33563584-1");
-		pageTracker._trackPageview();
-		} catch(err) {}
-	 </script>
-	 -->
-	<script src="js/jquery.min.js"></script>
-	<!--parse js -->
-	<script src="https://www.parsecdn.com/js/parse-1.3.0.min.js"></script>
-	<script src="js/app.js"></script>
-	
-	<!--
-	 <script type="text/javascript">
-   var _mfq = _mfq || [];
-   (function() {
-       var mf = document.createElement("script"); mf.type = "text/javascript"; mf.async = true;
-       mf.src = "http://cdn.mouseflow.com/projects/0ceb7258-aa76-4c3e-a8ec-cf5ab70f096c.js";
-       document.getElementsByTagName("head")[0].appendChild(mf);
-   })();
-</script>
-	 -->
+  </div> <!-- /container -->
+  <script src="js/jquery.min.js"></script>
+  <!--parse js -->
+  <script src="https://www.parsecdn.com/js/parse-1.3.0.min.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>

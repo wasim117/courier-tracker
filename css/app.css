@@ -19,12 +19,12 @@ body {
 		background: transparent;
       }
       .jumbotron h1 {
-        font-size: 72px;
+        font-size: 38px;
         line-height: 1;
       }
       .jumbotron .companies .btn {
         font-size: 21px;
-        padding: 14px 24px;
+        padding: 8px 24px;
       }
 
       /* Supporting marketing content */
